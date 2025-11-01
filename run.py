@@ -1,44 +1,94 @@
 import hashlib
 import time
+import itertools
 
-# Целевые хеши, которые нужно найти
-TARGET_MD5 = "743f0ed26d2bff34fb9a335588238ceb"
-TARGET_SHA384 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
+def solve_problem(target1, target2):
+    start_time = time.time()
+    
+    
+    letters = 'ABEKMHOPCTYX'  
+    digits = '0123456789'
+    
+   
+    regions = ['77', '97', '99', '177', '197', '199', '777', '50', '90', '150']
+    
+    counter = 0
+    found = None
+    
+    print("Поиск российских номерных знаков в латинской транслитерации...")
+    
+    
+    for l1 in letters:
+        for d1, d2, d3 in itertools.product(digits, repeat=3):
+            for l2, l3 in itertools.product(letters, repeat=2):
+                plate = f"{l1}{d1}{d2}{d3}{l2}{l3}"
+                counter += 1
+                
+                md5_hash = hashlib.md5(plate.encode()).hexdigest()
+                if md5_hash == target1:
+                    sha256_hash = hashlib.sha256(plate.encode()).hexdigest()
+                    if sha256_hash == target2:
+                        found = plate
+                        break
+            if found:
+                break
+        if found:
+            break
+        
+        if counter % 100000 == 0:
+            elapsed = time.time() - start_time
+            print(f"Проверено: {counter} комбинаций, время: {elapsed:.1f}с")
+    
+    
+    if not found:
+        print("Поиск с кодами регионов...")
+        for region in regions:
+            for l1 in letters:
+                for d1, d2, d3 in itertools.product(digits, repeat=3):
+                    for l2, l3 in itertools.product(letters, repeat=2):
+                        plate = f"{l1}{d1}{d2}{d3}{l2}{l3}{region}"
+                        counter += 1
+                        
+                        md5_hash = hashlib.md5(plate.encode()).hexdigest()
+                        if md5_hash == target1:
+                            sha256_hash = hashlib.sha256(plate.encode()).hexdigest()
+                            if sha256_hash == target2:
+                                found = plate
+                                break
+                    if found:
+                        break
+                if found:
+                    break
+            if found:
+                break
+            
+            if counter % 100000 == 0:
+                elapsed = time.time() - start_time
+                print(f"Проверено: {counter} комбинаций, время: {elapsed:.1f}с")
+    
+    end_time = time.time()
+    
+    if found:
+        print(f"🎉 НАЙДЕНО! Номерной знак: {found}")
 
-# Функции для вычисления хеша
-def md5_hex(s):
-    return hashlib.md5(s.encode('utf-8')).hexdigest()
+    else:
+        print("❌ Номерной знак не найден")
+        print("Возможно, нужно проверить другие форматы:")
+        print("- Номера СТС/ПТС")
+        print("- VIN российских автомобилей")
+        print("- Другие коды регионов")
+    
+    print(f"~{counter/1000:.1f} тыс возможных результатов")
+    if found:
+        print(f"|| {found} ||")
+    else:
+        print("|| Не найдено ||")
+    print(f"Время выполнения функции {end_time - start_time} сек.")
+    
+    return found
 
-def sha384_hex(s):
-    return hashlib.sha384(s.encode('utf-8')).hexdigest()
-
-with open('your_dictionary.txt', 'r', encoding='utf-8') as f:
-    dictionary = [line.strip() for line in f]
-
-start_time = time.time()
-
-found = False
-result_word = None
-
-print("Начинаем перебор слов...")
-
-for word in dictionary:
-    m_hash = md5_hex(word)
-    s_hash = sha384_hex(word)
-
-    # Проверка совпадения
-    if m_hash == TARGET_MD5 and s_hash == TARGET_SHA384:
-        result_word = word
-        found = True
-        break
-
-# Время выполнения
-elapsed_time = time.time() - start_time
-
-if found:
-    print("Ответ найден:")
-    print(f"Строка: {result_word}")
-else:
-    print("Совпадений не найдено в данном словаре.")
-
-print(f"Время выполнения: {elapsed_time:.2f} сек")
+if __name__ == "__main__":
+    target1 = "743f0ed26d2bff34fb9a335588238ceb"
+    target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
+    
+    solve_problem(target1, target2)
