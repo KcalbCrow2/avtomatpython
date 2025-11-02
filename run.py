@@ -22,7 +22,7 @@ def solve_problem(target1, target2):
         for d1, d2, d3 in itertools.product(digits, repeat=3):
             for l2, l3 in itertools.product(letters, repeat=2):
                 plate = f"{l1}{d1}{d2}{d3}{l2}{l3}"
-                counter += 1
+                
                 
                 md5_hash = hashlib.md5(plate.encode()).hexdigest()
                 if md5_hash == target1:
@@ -87,4 +87,5 @@ if __name__ == "__main__":
     target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
     
     solve_problem(target1, target2)
+
 
