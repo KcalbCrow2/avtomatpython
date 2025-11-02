@@ -67,7 +67,7 @@ def solve_problem(target1, target2):
     end_time = time.time()
     
     if found:
-        print(f"🎉 НАЙДЕНО! Номерной знак: {found}")
+        print(f"🎉 НАЙДЕНО! ")
 
     else:
         print("❌ Номерной знак не найден")
@@ -87,6 +87,7 @@ if __name__ == "__main__":
     target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
     
     solve_problem(target1, target2)
+
 
 
 
