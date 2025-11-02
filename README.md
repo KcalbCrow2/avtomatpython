@@ -4,7 +4,7 @@
 
 
 Ответ: `B408MX77 черный Kia Ceed `
-Фото: ![Иллюстрация к проекту](https://github.com/KcalbCrow2/avtomatpython/blob/main/134132.png)
+Фото: ![Иллюстрация к проекту](https://github.com/KcalbCrow2/avtomatpython/blob/main/9553714.jpg)
 
 Поиск российских номерных знаков в латинской транслитерации...
 Поиск с кодами регионов...
