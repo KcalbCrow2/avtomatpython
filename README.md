@@ -3,7 +3,7 @@
 
 
 
-Ответ: `B408MX77 черный Kia Ceed `
+Ответ: `B408MX77 Тёмно-синий VOLKSWAGEN JETTA `
 Фото: ![Иллюстрация к проекту](https://github.com/KcalbCrow2/avtomatpython/blob/main/9553714.jpg)
 
 Поиск российских номерных знаков в латинской транслитерации...
