@@ -35,9 +35,7 @@ def solve_problem(target1, target2):
         if found:
             break
         
-        if counter % 100000 == 0:
-            elapsed = time.time() - start_time
-            print(f"Проверено: {counter} комбинаций, время: {elapsed:.1f}с")
+       
     
     
     if not found:
