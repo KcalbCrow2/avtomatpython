@@ -60,9 +60,7 @@ def solve_problem(target1, target2):
             if found:
                 break
             
-            if counter % 100000 == 0:
-                elapsed = time.time() - start_time
-                print(f"Проверено: {counter} комбинаций, время: {elapsed:.1f}с")
+        
     
     end_time = time.time()
     
@@ -87,6 +85,7 @@ if __name__ == "__main__":
     target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
     
     solve_problem(target1, target2)
+
 
 
 
