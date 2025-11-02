@@ -73,10 +73,7 @@ def solve_problem(target1, target2):
 
     else:
         print("❌ Номерной знак не найден")
-        print("Возможно, нужно проверить другие форматы:")
-        print("- Номера СТС/ПТС")
-        print("- VIN российских автомобилей")
-        print("- Другие коды регионов")
+
     
     print(f"~{counter/1000:.1f} тыс возможных результатов")
     if found:
@@ -92,3 +89,4 @@ if __name__ == "__main__":
     target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
     
     solve_problem(target1, target2)
+
