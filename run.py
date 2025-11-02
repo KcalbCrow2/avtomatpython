@@ -39,7 +39,7 @@ def solve_problem(target1, target2):
     
     
     if not found:
-        print("Поиск с кодами регионов...")
+        print("Работаем с кодами регионов...")
         for region in regions:
             for l1 in letters:
                 for d1, d2, d3 in itertools.product(digits, repeat=3):
@@ -87,6 +87,7 @@ if __name__ == "__main__":
     target2 = "ef581243eb6f7fa74ce03466b9051464275c6b34017a6f031f2548a6d5d0b711"
     
     solve_problem(target1, target2)
+
 
 
 
